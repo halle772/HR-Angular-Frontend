@@ -64,3 +64,13 @@ html, body {
         }
     }
 }
+
+@media screen and (max-width: 600px){
+    .deduction-form{
+        flex-direction: column;
+        .form-group{
+            width: 100% !important;
+            flex: 0 0 100% !important;
+        }
+    }
+}

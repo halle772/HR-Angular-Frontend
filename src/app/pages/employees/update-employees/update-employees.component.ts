@@ -22,8 +22,8 @@ export class UpdateEmployeesComponent {
 
   validateDeduction(){
     return this.employee?.deduction.length 
-    ? this.employee.deduction.some((deduction: any) => !deduction.name || deduction.value === undefined || deduction.value === null || deduction.value === '')
-    : false;
+    ? this.employee.deduction.some((deduction: any) => !deduction.name || !deduction.value)
+    : true;
   }
 
   addDeduction(){
@@ -40,6 +40,9 @@ export class UpdateEmployeesComponent {
       totalDeduction += deduction.value;
     });
     return this.employee.salary - totalDeduction;
+  }
+  checkValue($event: any, value: any){
+    if($event.target.value < 0) value = 0;
   }
 
 }

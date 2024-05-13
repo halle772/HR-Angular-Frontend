@@ -4,12 +4,18 @@
       <mat-icon>add</mat-icon>
       Add Employee
     </button>
-    <button mat-button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">
-      Sort {{ascSort? '(A-Z)' : '(Z-A)'}}<mat-icon>arrow_drop_down</mat-icon>
-    </button>
+    <div class="input-container">
+      <mat-icon class="search">search</mat-icon>
+      <input class="filter-input" [(ngModel)]="searchValue" (input)="search()" placeholder="Search employees..." />
+    </div>
+    <button class="filter-btn" mat-button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">
+      Sort {{ascSort}}<mat-icon>arrow_drop_down</mat-icon>
+    </button>    
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="sortNames('asc')">A-Z</button>
-      <button mat-menu-item (click)="sortNames('dsc')">Z-A</button>
+      <button mat-menu-item (click)="sortNames('Name (A-Z)')">Name (A-Z)</button>
+      <button mat-menu-item (click)="sortNames('Name (Z-A)')">Name (Z-A)</button>
+      <button mat-menu-item (click)="sortNames('Salary (L-H)')">Salary (L-H)</button>
+      <button mat-menu-item (click)="sortNames('Salary (H-L)')">Salary (H-L)</button>
     </mat-menu>
   </div>
   <table class="table">
@@ -22,7 +28,7 @@
         <th scope="col">Salary</th>
         <th scope="col">Deduction</th>
         <th scope="col">Net Pay</th>
-        <th scope="col"></th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -34,7 +40,7 @@
         <td data-label="Salary">{{employee.salary}}$</td>
         <td data-label="Deduction">{{calculateDeduction(employee)}}$</td>
         <td data-label="Net Pay">{{calculateSalary(employee)}}$</td>
-        <td class="controls">
+        <td class="controls" data-label="Actions">
             <button mat-icon-button color="primary" (click)="showUpdateModal(employee)">
               <mat-icon>edit</mat-icon>
             </button>
@@ -45,4 +51,7 @@
       </tr>
     </tbody>
   </table>
+  <div *ngIf="!employees.length" class="no-data">
+    <span>No Data</span>
+  </div>
 </div>

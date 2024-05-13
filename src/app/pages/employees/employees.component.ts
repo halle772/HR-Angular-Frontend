@@ -4,6 +4,7 @@ import { EmployeesService } from 'src/app/services/employee/employees.service';
 import { UpdateEmployeesComponent } from './update-employees/update-employees.component';
 import { AddEmployeesComponent } from './add-employees/add-employees.component';
 import { DeleteEmployeeComponent } from './delete-employee/delete-employee.component';
+import { Debounce } from 'src/app/utils/debounce';
 
 @Component({
   selector: 'app-employees',
@@ -13,9 +14,8 @@ import { DeleteEmployeeComponent } from './delete-employee/delete-employee.compo
 export class EmployeesComponent implements OnInit {
 
   employees: any = [];
-  ascSort = true;
-
-  
+  ascSort = '';
+  searchValue: string = '';
 
   constructor(private employeesService: EmployeesService, private dialog: MatDialog) {}
 
@@ -24,7 +24,7 @@ export class EmployeesComponent implements OnInit {
   }
 
   loadEmployees() {
-    this.employeesService.getEmployees().subscribe((res:any) => {
+    this.employeesService.getEmployees(this.searchValue).subscribe((res:any) => {
       this.employees = res.map((value: any, key: number)=> ({...value, id: key + 1}));
     })
   }
@@ -82,12 +82,18 @@ export class EmployeesComponent implements OnInit {
   }
 
   sortNames(type: string) {
-    if(type == 'asc') {
-      this.ascSort = true;
+    if(type == 'Name (A-Z)') {
+      this.ascSort = type;
       this.employees.sort((a:any, b: any) => a.name.localeCompare(b.name));
-    } else {
-      this.ascSort = false;
+    } else if(type == 'Name (Z-A)') {
+      this.ascSort = type;
       this.employees.sort((a:any, b: any) => b.name.localeCompare(a.name));
+    } else if (type == 'Salary (L-H)'){
+      this.ascSort = type;
+      this.employees.sort((a:any, b: any) => a.salary - b.salary);
+    } else if (type == 'Salary (H-L)'){
+      this.ascSort = type;
+      this.employees.sort((a:any, b: any) => b.salary - a.salary);
     }
   }
 
@@ -105,6 +111,11 @@ export class EmployeesComponent implements OnInit {
       totalDeduction += deduction.value;
     });
     return employee.salary - (totalDeduction ? totalDeduction : 0);
+  }
+
+  @Debounce(300)
+  search() {
+    this.loadEmployees();
   }
 
 }

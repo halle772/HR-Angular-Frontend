@@ -46,6 +46,7 @@
       class="form-control"
       name="salary"
       [(ngModel)]="employee.salary"
+      (input)="checkValue($event, employee.salary)"
       required
     />
   </div>
@@ -75,6 +76,7 @@
             class="form-control"
             name="deduction"
             [(ngModel)]="deduction.value"
+            (input)="checkValue($event, deduction.value)"
             required
         />
     </div>

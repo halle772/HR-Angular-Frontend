@@ -11,8 +11,8 @@ export class EmployeesService {
   
   baseUrl = environment.apiUrl;
 
-  getEmployees() {
-    return this.http.get(`${this.baseUrl}/employees`);
+  getEmployees(search: string) {
+    return this.http.get(`${this.baseUrl}/employees?name=${search}`);
   }
 
   addEmployee(data: any) {
