@@ -52,33 +52,54 @@
                 />
             </div>
             <div class="form-group">
-                <label for="deduction">Deduction</label>
-                <input
-                    min="0"
-                    placeholder="Deduction"
-                    type="number"
-                    id="deduction"
-                    class="form-control"
-                    name="deduction"
-                    [(ngModel)]="employee.deduction"
-                    required
-                />
+                <label for="Sallary">Deductions</label>
             </div>
+            <div class="deduction-form" *ngFor="let deduction of employee.deduction; let i=index">
+                <div class="form-group">
+                    <label for="deduction">Item {{i + 1}}</label>
+                    <input
+                        min="0"
+                        placeholder="Deduction"
+                        id="deduction"
+                        class="form-control"
+                        name="deduction"
+                        [(ngModel)]="deduction.name"
+                        required
+                    />
+                </div>
+                <div class="form-group">
+                    <label class="deduction-value" for="deduction">Value <mat-icon (click)="removeItem(i)" color="warn">close</mat-icon></label>
+                    <input
+                        min="0"
+                        placeholder="Deduction Value"
+                        type="number"
+                        id="deduction"
+                        class="form-control"
+                        name="deduction"
+                        [(ngModel)]="deduction.value"
+                        required
+                    />
+                </div>
+            </div>
+            <button (click)="addDeduction()" class="deduction-btn" mat-stroked-button color="primary">
+                <mat-icon>add</mat-icon>
+                Add deductions
+              </button>
             <div class="form-group">
-                <label for="deduction">Final Pay</label>
+                <label for="deduction">Net Pay</label>
                 <input
                     min="0"
                     [disabled]="true"
-                    placeholder="Pay"
+                    placeholder="Net Pay"
                     type="number"
                     id="pay"
                     class="form-control"
                     name="pay"
-                    [value]="employee.salary - employee.deduction"
+                    [value]="calCulateSalary()"
                     required/>
             </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button  mat-button color="warn" mat-dialog-close>Cancel</button>
-    <button  mat-stroked-button color="primary" [mat-dialog-close]="employee" cdkFocusInitial>Save</button>
+    <button [disabled]="validateEmploy()" mat-stroked-button color="primary" [mat-dialog-close]="employee" cdkFocusInitial>Save</button>
 </mat-dialog-actions>

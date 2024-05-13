@@ -91,4 +91,20 @@ export class EmployeesComponent implements OnInit {
     }
   }
 
+  calculateDeduction(employee: any) {
+    let totalDeduction = 0;
+    employee.deduction.forEach((deduction: any) => {
+      totalDeduction += deduction.value;
+    });
+    return totalDeduction ? totalDeduction : 0;
+  }
+
+  calculateSalary(employee: any) {
+    let totalDeduction = 0;
+    employee.deduction.forEach((deduction: any) => {
+      totalDeduction += deduction.value;
+    });
+    return employee.salary - (totalDeduction ? totalDeduction : 0);
+  }
+
 }

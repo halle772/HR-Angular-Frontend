@@ -20,3 +20,37 @@
         border: 1px solid #6b6b74;
     }
 }
+.remove-btn {
+    height: 100%;
+    display: flex
+}
+.deduction-btn {
+    margin: 4px 0;
+}
+.deduction-value{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.deduction-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 400px;
+    gap: 10%; /* Adjust the gap size to ensure each form control takes 45% */
+    .form-group {
+        flex: 0 0 50%; /* Flex-grow: 0, Flex-shrink: 0, Flex-basis: 45% */
+        width: 50%; /* Set the width explicitly */
+        .form-control {
+            width: auto;
+        }
+        label {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 26px;
+            color: #6b6b74;
+        }
+    }
+}
