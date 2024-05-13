@@ -41,8 +41,8 @@ export class AddEmployeesComponent implements OnInit {
     return this.employee.salary - totalDeduction;
   }
 
-  checkValue($event: any, value: any){
-    if($event.target.value < 0) value = 0;
+  checkValue($event: any, value: any, key: any ){
+    if($event.target.value < 0) value[key] = '';
   }
   
 }

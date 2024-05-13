@@ -52,7 +52,44 @@
             line-height: 26px;
             color: #6b6b74;
         }
+        .desktop-icon {
+            display: block;
+        }
+        .mobile-icon {
+            display: none;
+        }
     }
 }
 
+@media screen and (max-width: 600px){
+    .desktop-icon{
+        display: none !important;
+    }
+    .mobile-icon{
+        display: block !important;
+    }
+    .mobile-label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+}
+.dialog-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1{
+        margin: 0;
+    }
+}
 
+.close-icon{
+    cursor: pointer;
+    position: absolute;
+    right: 24px;
+    top: 20px;
+}
+.mr-0 {
+    margin: 0;
+}

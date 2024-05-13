@@ -1,4 +1,5 @@
-<h1 mat-dialog-title>Add Employees</h1>
+<h1 class="mr-0" mat-dialog-title>Add Employees</h1>
+<mat-icon class="close-icon" mat-dialog-close>close</mat-icon>
 <mat-dialog-content>
         <div class="form-group">
             <label for="name">Name</label>
@@ -48,7 +49,7 @@
                     class="form-control"
                     name="salary"
                     [(ngModel)]="employee.salary"
-                    (input)="checkValue($event, employee.salary)"
+                    (input)="checkValue($event, employee, 'salary')"
                     required
                 />
             </div>
@@ -57,7 +58,7 @@
             </div>
             <div class="deduction-form" *ngFor="let deduction of employee.deduction; let i=index">
                 <div class="form-group">
-                    <label for="deduction">Item {{i + 1}}</label>
+                    <label class="mobile-label" for="deduction">Item {{i + 1}} <mat-icon class="mobile-icon" (click)="removeItem(i)" color="warn">close</mat-icon></label>
                     <input
                         min="0"
                         placeholder="Deduction"
@@ -69,7 +70,7 @@
                     />
                 </div>
                 <div class="form-group">
-                    <label class="deduction-value" for="deduction">Value <mat-icon (click)="removeItem(i)" color="warn">close</mat-icon></label>
+                    <label class="deduction-value" for="deduction">Value <mat-icon class="desktop-icon" (click)="removeItem(i)" color="warn">close</mat-icon></label>
                     <input
                         min="0"
                         placeholder="Deduction Value"
@@ -78,7 +79,7 @@
                         class="form-control"
                         name="deduction"
                         [(ngModel)]="deduction.value"
-                        (input)="checkValue($event, deduction.value)"
+                        (input)="checkValue($event, employee.deduction[i], 'value')"
                         required
                     />
                 </div>

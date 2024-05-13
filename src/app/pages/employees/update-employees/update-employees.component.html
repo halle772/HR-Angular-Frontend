@@ -1,4 +1,5 @@
-<h1 mat-dialog-title>Add Employees</h1>
+<h1 class="mr-0" mat-dialog-title>Add Employees</h1>
+<mat-icon class="close-icon" mat-dialog-close>close</mat-icon>
 <mat-dialog-content>
   <div class="form-group">
     <label for="name">Name</label>
@@ -46,7 +47,7 @@
       class="form-control"
       name="salary"
       [(ngModel)]="employee.salary"
-      (input)="checkValue($event, employee.salary)"
+      (input)="checkValue($event, employee, 'salary')"
       required
     />
   </div>
@@ -76,7 +77,7 @@
             class="form-control"
             name="deduction"
             [(ngModel)]="deduction.value"
-            (input)="checkValue($event, deduction.value)"
+            (input)="checkValue($event, employee.deduction[i], 'value')"
             required
         />
     </div>
