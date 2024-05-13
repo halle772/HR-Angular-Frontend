@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 0px 10%;
+    font-family: Montserrat;
+    font-display: swap;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 70px;
+    letter-spacing: 0.02em;
+    color: #181818;
+    height: 60px;
+    box-shadow: 0 6px 31px rgba(7, 13, 144, 0.09);
+    justify-content: space-between;
+    .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+    }
+    .header-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

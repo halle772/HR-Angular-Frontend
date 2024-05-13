@@ -1,0 +1,36 @@
+<div class="container">
+  <button mat-stroked-button color="primary" (click)="showAddModal()">
+    <mat-icon>add</mat-icon>
+    Add Employee
+  </button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Position</th>
+        <th scope="col">Employer</th>
+        <th scope="col">Salary</th>
+        <th scope="col">Deduction</th>
+        <th scope="col">Pay</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td data-label="Account">{{employee.name}}</td>
+        <td data-label="Due Date">{{ employee.position }}</td>
+        <td data-label="Amount">{{ employee.employer }}</td>
+        <td data-label="Period">{{employee.salary}}$</td>
+        <td data-label="Amount">{{employee.deduction}}$</td>
+        <td data-label="Period">{{employee.salary - employee.deduction}}$</td>
+        <td class="controls">
+            <button mat-icon-button color="primary" (click)="showUpdateModal(employee)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="showDeleteConfirm(employee._id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </tbody>
+  </table>
+</div>

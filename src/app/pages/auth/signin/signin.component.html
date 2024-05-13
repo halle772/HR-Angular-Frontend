@@ -1,0 +1,31 @@
+<div class="container">
+    <h1 class="heading">Sign In</h1>
+    <form class="form" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              placeholder="Email"
+              formControlName="email"
+              type="email"
+              id="email"
+              class="form-control"
+              name="email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              placeholder="Password"
+              formControlName="password"
+              type="password"
+              id="password"
+              class="form-control"
+              name="password"
+              required
+            />
+          </div>
+        <button class="btn btn-primary">Signin</button>
+        <span class="form-footer">Don’t have an account yet? <a [routerLink]="['/signup']">Sign up now!</a></span>
+    </form>
+</div>

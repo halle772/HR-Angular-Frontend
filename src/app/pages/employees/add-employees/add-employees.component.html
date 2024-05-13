@@ -1,0 +1,84 @@
+<h1 mat-dialog-title>Add Employees</h1>
+<mat-dialog-content>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input
+           
+                placeholder="Name"
+                type="text"
+                id="name"
+                class="form-control"
+                name="name"
+                [(ngModel)]="employee.name"
+                required
+            />
+            </div>
+            <div class="form-group">
+                <label for="employer">Employer</label>
+                <input
+               
+                    placeholder="Employer"
+                    type="text"
+                    id="employer"
+                    class="form-control"
+                    name="employer"
+                    [(ngModel)]="employee.employer"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="position">Position</label>
+                <input
+               
+                    placeholder="Position"
+                    type="text"
+                    id="position"
+                    class="form-control"
+                    name="position"
+                    [(ngModel)]="employee.position"
+                    required/>
+            </div>
+            <div class="form-group">
+                <label for="Sallary">Salary</label>
+                <input
+                min="0"
+                    placeholder="Salary"
+                    type="number"
+                    id="salary"
+                    class="form-control"
+                    name="salary"
+                    [(ngModel)]="employee.salary"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="deduction">Deduction</label>
+                <input
+                    min="0"
+                    placeholder="Deduction"
+                    type="number"
+                    id="deduction"
+                    class="form-control"
+                    name="deduction"
+                    [(ngModel)]="employee.deduction"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="deduction">Final Pay</label>
+                <input
+                    min="0"
+                    [disabled]="true"
+                    placeholder="Pay"
+                    type="number"
+                    id="pay"
+                    class="form-control"
+                    name="pay"
+                    [value]="employee.salary - employee.deduction"
+                    required/>
+            </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button  mat-button color="warn" mat-dialog-close>Cancel</button>
+    <button  mat-stroked-button color="primary" [mat-dialog-close]="employee" cdkFocusInitial>Save</button>
+</mat-dialog-actions>

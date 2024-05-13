@@ -1,0 +1,9 @@
+<nav class="container">
+    <div class="logo-container">
+    <img class="logo" src="/assets/logo.ico"/>
+    <span>HrApp</span>
+    </div>
+    <button class="header-btn" *ngIf="loggedIn()" mat-icon-button color="warn" (click)="logOut()">
+        <mat-icon>exit_to_app</mat-icon>
+    </button>
+</nav>

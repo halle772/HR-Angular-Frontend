@@ -1,0 +1,22 @@
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 4px;
+    label {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 26px;
+        color: #6b6b74;
+    }
+    .form-control {
+        border-radius: 4px;
+        line-height: 26px;
+        padding: 10px 16px;
+        font-size: 16px;
+        letter-spacing: 2%;
+        width: 400px;
+        border: 1px solid #6b6b74;
+    }
+}
