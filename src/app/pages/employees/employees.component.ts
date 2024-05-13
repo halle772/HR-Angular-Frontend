@@ -25,7 +25,7 @@ export class EmployeesComponent implements OnInit {
 
   loadEmployees() {
     this.employeesService.getEmployees().subscribe((res:any) => {
-      this.employees = res.sort((a:any, b: any) => a.name.localeCompare(b.name)).map((value: any, key: number)=> ({...value, id: key + 1}));
+      this.employees = res.map((value: any, key: number)=> ({...value, id: key + 1}));
     })
   }
 
