@@ -15,6 +15,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 registerLocaleData(en);
@@ -35,7 +37,9 @@ registerLocaleData(en);
     MatDialogModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule,
+    MatMenuModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

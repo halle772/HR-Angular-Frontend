@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="heading">Sing Up</h1>
   <form class="form" [formGroup]="validateForm" (ngSubmit)="submitForm()">
-    <div class="form-group">
+    <div class="form-group" [ngClass]="{'form-error': errors.email}">
       <label for="email">Email</label>
       <input
         placeholder="Email"
@@ -12,8 +12,9 @@
         name="email"
         required
       />
+      <span *ngIf="errors.email" class="errors-sub">* please enter a valid email address.</span>
     </div>
-    <div class="form-group">
+    <div class="form-group" [ngClass]="{'form-error': errors.password}">
       <label for="password">Password</label>
       <input
         placeholder="Password"
@@ -24,8 +25,9 @@
         name="password"
         required
       />
+      <span *ngIf="errors.password" class="errors-sub">* must include a special character, uppercase letter, and min 8 letters</span>
     </div>
-    <div class="form-group">
+    <div class="form-group" [ngClass]="{'form-error': errors.confirmPassword}">
       <label for="confirmPassword">Confirm Password</label>
       <input
         placeholder="Confirm Password"
@@ -36,6 +38,7 @@
         name="confirmPassword"
         required
       />
+      <span *ngIf="errors.confirmPassword" class="errors-sub">* should be same as password</span>
     </div>
     <button class="btn btn-primary" type="submit">Sign Up</button>
     <span class="form-footer">

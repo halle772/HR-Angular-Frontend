@@ -10,6 +10,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DeleteEmployeeComponent } from './delete-employee/delete-employee.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -27,6 +29,8 @@ import { DeleteEmployeeComponent } from './delete-employee/delete-employee.compo
     MatDialogModule,
     BrowserModule,
     BrowserAnimationsModule,
+    MatSelectModule,
+    MatMenuModule
   ]
 })
 export class EmployeesModule { }

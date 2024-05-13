@@ -36,16 +36,45 @@ export class SignupComponent {
       ],
     ],
   });
-  submitForm() {
-    const payload = {
-      email: this.validateForm.get('email')?.value,
-      password: this.validateForm.get('password')?.value,
-    };
-    this.auth.signUp(payload).subscribe((res) => {
-      this.router.navigate(['signin'])
-    })
-  }
-  constructor(private form: NonNullableFormBuilder, private auth: AuthService, private router: Router) {}
 
+  errors: {
+    [key: string]: boolean | undefined;
+    email: boolean;
+    password: boolean;
+    confirmPassword: boolean;
+  } = {
+    email: false,
+    password: false,
+    confirmPassword: false,
+  };
+
+  getControl(name: string) {
+    return this.validateForm.get(name);
+  }
+
+  updateValidationStatus() {
+    Object.keys(this.errors).forEach((key: string) => {
+      const control = this.getControl(key);
+      this.errors[key] = control?.invalid && control?.dirty;
+      if (key === 'confirmPassword') {
+        this.errors[key] = this.errors[key] || control?.value != this.getControl('password')?.value;
+      }
+    });
+    return this.validateForm.valid;
+  }
+
+  submitForm() {
+    if(this.updateValidationStatus()) {
+      const payload = {
+        email: this.validateForm.get('email')?.value,
+        password: this.validateForm.get('password')?.value,
+      };
+      this.auth.signUp(payload).subscribe((res) => {
+        this.router.navigate(['signin'])
+      })
+    }
+  }
+  
+  constructor(private form: NonNullableFormBuilder, private auth: AuthService, private router: Router) {}
 
 }

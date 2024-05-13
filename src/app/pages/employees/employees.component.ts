@@ -13,6 +13,9 @@ import { DeleteEmployeeComponent } from './delete-employee/delete-employee.compo
 export class EmployeesComponent implements OnInit {
 
   employees: any = [];
+  ascSort = true;
+
+  
 
   constructor(private employeesService: EmployeesService, private dialog: MatDialog) {}
 
@@ -22,7 +25,7 @@ export class EmployeesComponent implements OnInit {
 
   loadEmployees() {
     this.employeesService.getEmployees().subscribe((res:any) => {
-      this.employees = res;
+      this.employees = res.sort((a:any, b: any) => a.name.localeCompare(b.name)).map((value: any, key: number)=> ({...value, id: key + 1}));
     })
   }
 
@@ -76,6 +79,16 @@ export class EmployeesComponent implements OnInit {
     this.employeesService.deleteEmployee(id).subscribe((res) => {
       this.loadEmployees();
     });
+  }
+
+  sortNames(type: string) {
+    if(type == 'asc') {
+      this.ascSort = true;
+      this.employees.sort((a:any, b: any) => a.name.localeCompare(b.name));
+    } else {
+      this.ascSort = false;
+      this.employees.sort((a:any, b: any) => b.name.localeCompare(a.name));
+    }
   }
 
 }

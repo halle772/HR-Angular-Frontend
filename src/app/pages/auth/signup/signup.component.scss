@@ -88,7 +88,15 @@
         }
     }
 }
-
+.form-error {
+    .errors-sub{
+        color: red;
+        font-size: 10px;
+  }
+    input {
+        border: 1px solid red !important;
+    }
+}
 @media (max-width: 600px) {
     .container {
       .form {
