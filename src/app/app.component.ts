@@ -7,13 +7,15 @@ import { LoaderService } from './services/loader/loader.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  loaderCheck = true;
-  
-  constructor(private loader: LoaderService) {}
+  title = "HR App";
+  loaderCheck: number = 0;
 
+  constructor(private _loading: LoaderService){}
+  
   ngOnInit(): void {
-    this.loader.getLoadingCheck().subscribe((check: any) => {
-      this.loaderCheck = check;
+    this._loading.getLoadingCheck().subscribe((check: boolean) => {
+      if(check) this.loaderCheck++;
+      else if(this.loaderCheck > 0) this.loaderCheck--;
     })
   }
 
