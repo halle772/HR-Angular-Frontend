@@ -44,7 +44,7 @@ export class EmployeesComponent implements OnInit {
       panelClass: 'mobile-responsive-modal',
     });
     const instance = dialogRef.componentInstance;
-    instance.employee = {...employee};
+    instance.employee = structuredClone(employee);
 
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
