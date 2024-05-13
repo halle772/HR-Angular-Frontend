@@ -54,6 +54,30 @@
         }
     }
 }
+@media screen and (max-width: 600px){
+    .desktop-icon{
+        display: none !important;
+    }
+    .mobile-icon{
+        display: block !important;
+    }
+    .mobile-label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+}
+
+.dialog-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1{
+        margin: 0;
+    }
+}
+
 .close-icon{
     cursor: pointer;
     position: absolute;
