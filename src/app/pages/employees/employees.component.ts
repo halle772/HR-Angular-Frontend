@@ -27,7 +27,9 @@ export class EmployeesComponent implements OnInit {
   }
 
   showAddModal() {
-    const dialogRef = this.dialog.open(AddEmployeesComponent);
+    const dialogRef = this.dialog.open(AddEmployeesComponent, {
+      panelClass: 'mobile-responsive-modal',
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if(result) this.addEmployee(result);
@@ -35,9 +37,11 @@ export class EmployeesComponent implements OnInit {
   }
 
   showUpdateModal(employee: any) {
-    const dialogRef = this.dialog.open(UpdateEmployeesComponent);
+    const dialogRef = this.dialog.open(UpdateEmployeesComponent, {
+      panelClass: 'mobile-responsive-modal',
+    });
     const instance = dialogRef.componentInstance;
-    instance.employee = employee;
+    instance.employee = {...employee};
 
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
@@ -59,7 +63,9 @@ export class EmployeesComponent implements OnInit {
   }
 
   showDeleteConfirm(id: any): void {
-    const dialogRef = this.dialog.open(DeleteEmployeeComponent);
+    const dialogRef = this.dialog.open(DeleteEmployeeComponent, {
+      panelClass: 'mobile-responsive-modal',
+    });
     dialogRef.afterClosed().subscribe(result => {
       if(result) this.deleteResources(id);
     });

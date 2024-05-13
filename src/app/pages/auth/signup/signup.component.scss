@@ -88,3 +88,21 @@
         }
     }
 }
+
+@media (max-width: 600px) {
+    .container {
+      .form {
+        max-width: 90%; // Allows the form to expand fully on small screens
+  
+        .btn-primary {
+          font-size: 16px; // Slightly smaller font size on smaller screens
+        }
+      }
+      .form-footer {
+        font-size: 14px;
+        a {
+          font-size: 14px;
+        }
+      }
+    }
+  }

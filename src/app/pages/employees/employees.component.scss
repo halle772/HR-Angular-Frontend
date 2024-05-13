@@ -97,3 +97,9 @@ table {
     font-family: "Open Sans", sans-serif;
     line-height: 1.25;
   }
+
+  @media screen and (max-width: 600px){
+    ::ng-deep .mobile-responsive-modal{
+       width: calc(100vw - 20px) !important;
+    }
+   }

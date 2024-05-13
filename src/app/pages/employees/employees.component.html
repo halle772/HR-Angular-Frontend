@@ -17,12 +17,12 @@
     </thead>
     <tbody>
       <tr *ngFor="let employee of employees">
-        <td data-label="Account">{{employee.name}}</td>
-        <td data-label="Due Date">{{ employee.position }}</td>
-        <td data-label="Amount">{{ employee.employer }}</td>
-        <td data-label="Period">{{employee.salary}}$</td>
-        <td data-label="Amount">{{employee.deduction}}$</td>
-        <td data-label="Period">{{employee.salary - employee.deduction}}$</td>
+        <td data-label="Name">{{employee.name}}</td>
+        <td data-label="Position">{{ employee.position }}</td>
+        <td data-label="Employer">{{ employee.employer }}</td>
+        <td data-label="Salary">{{employee.salary}}$</td>
+        <td data-label="Deduction">{{employee.deduction}}$</td>
+        <td data-label="Pay">{{employee.salary - employee.deduction}}$</td>
         <td class="controls">
             <button mat-icon-button color="primary" (click)="showUpdateModal(employee)">
               <mat-icon>edit</mat-icon>
@@ -31,6 +31,7 @@
               <mat-icon>delete</mat-icon>
             </button>
         </td>
+      </tr>
     </tbody>
   </table>
 </div>
