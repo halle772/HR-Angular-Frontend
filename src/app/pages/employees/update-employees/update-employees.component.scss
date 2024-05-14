@@ -52,6 +52,21 @@
             line-height: 26px;
             color: #6b6b74;
         }
+        .desktop-icon {
+            display: block;
+        }
+        .mobile-icon {
+            display: none;
+        }
+    }
+}
+.form-error {
+    .errors-sub{
+        color: red;
+        font-size: 10px;
+  }
+    input {
+        border: 1px solid red !important;
     }
 }
 @media screen and (max-width: 600px){

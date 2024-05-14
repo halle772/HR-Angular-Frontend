@@ -27,7 +27,7 @@
         <th scope="col">Employer</th>
         <th scope="col">Salary</th>
         <th scope="col">Deduction</th>
-        <th scope="col">Net Pay</th>
+        <th scope="col">Net Income</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
@@ -37,9 +37,9 @@
         <td data-label="Name">{{employee.name}}</td>
         <td data-label="Position">{{ employee.position }}</td>
         <td data-label="Employer">{{ employee.employer }}</td>
-        <td data-label="Salary">{{employee.salary}}$</td>
-        <td data-label="Deduction">{{calculateDeduction(employee)}}$</td>
-        <td data-label="Net Pay">{{calculateSalary(employee)}}$</td>
+        <td data-label="Salary">${{employee.salary | number}}</td>
+        <td data-label="Deduction">${{calculateDeduction(employee) | number}}</td>
+        <td data-label="Net Income">${{calculateSalary(employee) | number}}</td>
         <td class="controls" data-label="Actions">
             <button mat-icon-button color="primary" (click)="showUpdateModal(employee)">
               <mat-icon>edit</mat-icon>

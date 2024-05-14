@@ -1,7 +1,7 @@
 <h1 class="mr-0" mat-dialog-title>Add Employees</h1>
 <mat-icon class="close-icon" mat-dialog-close>close</mat-icon>
 <mat-dialog-content>
-  <div class="form-group">
+  <div class="form-group" [ngClass]="{'form-error': errors.name}">
     <label for="name">Name</label>
     <input
       placeholder="Name"
@@ -12,9 +12,10 @@
       [(ngModel)]="employee.name"
       required
     />
+    <span *ngIf="errors.name" class="errors-sub">* name is required</span>
   </div>
-  <div class="form-group">
-    <label for="employer">Employer</label>
+  <div class="form-group" [ngClass]="{'form-error': errors.employer}">
+    <label for="employer">Employer Name</label>
     <input
       placeholder="Employer"
       type="text"
@@ -24,8 +25,9 @@
       [(ngModel)]="employee.employer"
       required
     />
+    <span *ngIf="errors.employer" class="errors-sub">* employer is required</span>
   </div>
-  <div class="form-group">
+  <div class="form-group" [ngClass]="{'form-error': errors.position}">
     <label for="position">Position</label>
     <input
       placeholder="Position"
@@ -36,8 +38,9 @@
       [(ngModel)]="employee.position"
       required
     />
+    <span *ngIf="errors.position" class="errors-sub">* position is required</span>
   </div>
-  <div class="form-group">
+  <div class="form-group" [ngClass]="{'form-error': errors.salary}">
     <label for="Sallary">Salary</label>
     <input
       min="0"
@@ -47,14 +50,15 @@
       class="form-control"
       name="salary"
       [(ngModel)]="employee.salary"
-      (input)="checkValue($event, employee, 'salary')"
       required
     />
+    <span *ngIf="errors.salary" class="errors-sub">* salary should be a positive number</span>
   </div>
-  <div class="form-group">
-    <label for="Sallary">Deductions</label>
+  <div class="form-group" [ngClass]="{'form-error': errors.requiredDeduction}">
+    <label for="Deduction">Deductions</label>
+    <span *ngIf="errors.requiredDeduction" class="errors-sub">* minimum one deduction is required</span>
 </div>
-<div class="deduction-form" *ngFor="let deduction of employee.deduction; let i=index">
+<div class="deduction-form" [ngClass]="{'form-error': errors.deduction[i]}" *ngFor="let deduction of employee.deduction; let i=index">
     <div class="form-group">
         <label class="mobile-label" for="deduction">Item {{i + 1}} <mat-icon class="mobile-icon" (click)="removeItem(i)" color="warn">close</mat-icon></label>
         <input
@@ -66,6 +70,7 @@
             [(ngModel)]="deduction.name"
             required
         />
+        <span *ngIf="errors.deduction[i]" class="errors-sub">* deduction is required</span>
     </div>
     <div class="form-group">
         <label class="deduction-value" for="deduction">Value <mat-icon class="desktop-icon" (click)="removeItem(i)" color="warn">close</mat-icon></label>
@@ -80,6 +85,7 @@
             (input)="checkValue($event, employee.deduction[i], 'value')"
             required
         />
+        <span *ngIf="errors.deduction[i]" class="errors-sub">* deduction should be a positive number</span>
     </div>
 </div>
 <button (click)="addDeduction()" class="deduction-btn" mat-stroked-button color="primary">
@@ -100,14 +106,14 @@
       required
     />
   </div>
+  <span *ngIf="errors.pay" class="errors-sub">* pay should be a positive number</span>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button color="warn" mat-dialog-close>Cancel</button>
   <button
-    [disabled]="validateEmploy()"
     mat-stroked-button
     color="primary"
-    [mat-dialog-close]="employee"
+    (click)="saveEmployee()"
     cdkFocusInitial
   >
     Save

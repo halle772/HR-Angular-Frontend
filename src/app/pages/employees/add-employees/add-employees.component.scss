@@ -19,6 +19,16 @@
         width: 400px;
         border: 1px solid #6b6b74;
     }
+
+}
+.form-error {
+    .errors-sub{
+        color: red;
+        font-size: 10px;
+  }
+    input {
+        border: 1px solid red !important;
+    }
 }
 .remove-btn {
     height: 100%;
